@@ -55,6 +55,7 @@ function App() {
         <Route path="/About" element={<About />} />
         <Route path="/" element={<Homepage books={books} removeBook={removeBook}/>} />
         <Route path="/Books/:segment" element={<Books Search={search} books = {books}  removeBook = {removeBook} />} />
+        <Route path="/:segment" element={<Books Search={search} books = {books}  removeBook = {removeBook} />} />
         <Route path="/addbook" element={<Addbook addbook={addbook} />} />
         <Route path="*"  element={<Notfound />} />
 
