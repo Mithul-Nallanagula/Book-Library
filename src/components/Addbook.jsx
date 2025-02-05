@@ -30,8 +30,8 @@ function Addbook( {addbook}) {
       ...book,
       book_id: Date.now(), 
     };
-    console.log("Added Book:", newBook);
-    addbook(book)
+    
+    addbook(newBook)
     navigate("/")
   }
   return (

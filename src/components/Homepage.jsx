@@ -3,7 +3,7 @@ import Booklist from './booklist'
 import Books from './Books'
 import { useNavigate } from 'react-router-dom';
 
-function Homepage( {books} ) {
+function Homepage( {books , removeBook } ) {
 
    const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ function Homepage( {books} ) {
   return (
     <>
     <h2 className='text-white font-bold mt-[20px] text-4xl ml-3'>Top Rates Books</h2>
-    <div className='flex'> <Booklist books={books} /></div>
+    <div className='flex'> <Booklist books={books} removeBook={removeBook} /></div>
      <h2 className='text-white font-bold mt-[20px] text-4xl ml-3'>Genres</h2>
      <div className='flex mt-[20px] overflow-x-auto no-scrollbar  '>
         <div className='m-3 cursor-pointer' onClick={() => clickbook('Funny')} >

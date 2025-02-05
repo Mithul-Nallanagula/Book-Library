@@ -52,7 +52,7 @@ function Books({ Search , books , removeBook }) {
       
         filteredbook.map( item => (
                      
-            <div className= {`border-2 border-white  text-white  h-fit    m-2 justify-center w-[240px] transition-all duration-300 mt-5 ${show == item.book_id ? "w-[240px] h-[800px]" : ''}`}   key={item.book_id} >
+            <div className= {`border-2 border-white  text-white  h-fit    m-2 justify-center w-[240px] transition-all duration-300 mt-5 ${show == item.book_id ? "w-[240px] h-[800px]" : ' '}`}   key={item.book_id} >
                 <img src={item.image} alt={item.title} className="w-screen h-[400px]"/>
                 <h2 className="text-center text-ellipsis whitespace-nowrap overflow-hidden">{item.title}</h2>
                 <h2  className="text-center font-bold">${item.price}</h2>

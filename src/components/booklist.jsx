@@ -4,7 +4,7 @@ import { Book } from './Book'
 
 
 
-function Booklist( {books} ) {
+function Booklist( {books , removeBook} ) {
   
  
 const [show , setShow] = useState(null);
@@ -16,7 +16,7 @@ const expand = (id) => {
   return (
     <>
      {books.filter(item => item.rating > 4.6).map((item , index) => {
-        const bookId = item.book_id || `added-${index}`;
+        const bookId = item.book_id ;
         return (
 
 

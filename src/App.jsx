@@ -6,10 +6,18 @@ import { useState , useEffect } from "react";
 import Addbook from "./components/Addbook";
 import { Book } from "./components/Book";
 import About from "./components/About";
+import Notfound from "./components/Notfound";
 
 function App() {
   const [search , setSearch] = useState("");
   const [books, setBooks] = useState([]);
+  const [load , setLoad] = useState(true);
+
+  useEffect (() => {
+    setTimeout(() => {
+      setLoad(false)
+    }, 2000);
+  } ,[])
    
   useEffect(() => {
     const save = JSON.parse(localStorage.getItem("books"));
@@ -24,12 +32,12 @@ function App() {
   } ,[])
   const removeBook = (bookId) => {
     const updatedBooks = books.filter((book) => book.book_id !== bookId);
-    setBooks(updatedBooks); // Update state after removing the book
+    setBooks(updatedBooks);
   };
 
   useEffect(() => {
     if (books.length > 0) {
-      localStorage.setItem("books", JSON.stringify(books)); // Save to localStorage
+      localStorage.setItem("books", JSON.stringify(books)); 
     }
   }, [books]);
   
@@ -40,12 +48,18 @@ function App() {
     <>
         <Router>
       <NavBar Search = {setSearch}/>
-      <Routes>
+      {load ? (   <div className="flex items-center justify-center h-screen bg-black">
+            <div className="w-16 h-16 border-4 border-gray-300 border-t-transparent rounded-full animate-spin"></div>
+          </div>) :
+      (<Routes>
         <Route path="/About" element={<About />} />
-        <Route path="/" element={<Homepage books={books}/>} />
+        <Route path="/" element={<Homepage books={books} removeBook={removeBook}/>} />
         <Route path="/Books/:segment" element={<Books Search={search} books = {books}  removeBook = {removeBook} />} />
         <Route path="/addbook" element={<Addbook addbook={addbook} />} />
+        <Route path="*"  element={<Notfound />} />
+
       </Routes>
+        )}
     </Router>
 
 </>
